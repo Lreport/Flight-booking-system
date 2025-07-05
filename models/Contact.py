@@ -1,48 +1,53 @@
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
-    from models.Address import Address
 
+if TYPE_CHECKING:
+    from models.address import Address
 
 class Contact:
-    def __init__(self, id:int, address: Address, email:str, phoneNumber:str):
-        self.__idCotact = id
-        self.__address = address
-        self.__email = email
-        self.__phoneNumber = phoneNumber
+    def __init__(self, id_contact:int, address: 'Address', id_address: 'Address', email:str, phone_number:str):
+        self._id_contact    = id_contact
+        self._address       = address
+        self._id_address    = id_address #concertar isso 
+        self._email         = email
+        self._phone_number  = phone_number
 
     @property
-    def _idCotact(self):
-        return self.__idCotact
+    def id_contact(self):
+        return self._id_contact
 
-    @_idCotact.setter
-    def _idCotact(self, value):
-        self.__idCotact = value
-
-    @property
-    def _address(self):
-        return self.__address
-
-    @_address.setter
-    def _address(self, value):
-        self.__address = value
+    @id_contact.setter
+    def id_contact(self, value):
+        self._id_contact = value
 
     @property
-    def _email(self):
-        return self.__email
+    def address(self):
+        return self._address
 
-    @_email.setter
-    def _email(self, value):
-        self.__email = value
+    @address.setter
+    def address(self, value):
+        self._address = value
 
     @property
-    def _phoneNumber(self):
-        return self.__phoneNumber
+    def id_address(self):
+        return self._id_address
+    
+    @id_address.setter
+    def id_address(self, value):
+        self._id_address = value
 
-    @_phoneNumber.setter
-    def _phoneNumber(self, value):
-        self.__phoneNumber = value
+    @property
+    def email(self):
+        return self._email
 
+    @email.setter
+    def email(self, value):
+        self._email = value
 
-    def __str__(self):
-        return f"Contact ID: {self._idCotact}, Address: {self._address._idContact}, Email: {self._email}, Phone Number: {self._phoneNumber}"
+    @property
+    def phone_number(self):
+        return self._phone_number
+
+    @phone_number.setter
+    def phone_number(self, value):
+        self._phone_number = value
