@@ -72,6 +72,11 @@ class Booking:
 
 
 
+    def __str__(self):
+        return f"Booking ID: {self._idBooking}, User ID: {self._userId._idUser}, Booking Number: {self._bookingNum}, Booking Date: {self._bookingDate}, Travel Date: {self._travelDate}, Total Cost: {self._totalCost}, Flight Booked: {self._flightBooked._idFlight}"
+    
+    def makePayment(self, paymentMethod: str,):
+        pass #criar classe payment e implementar aqui
 
-:
-#fazer a classe payment para posteriormente criar o metodo de pagamento
+    def cancelBooking(self):
+        pass # implementar cancelamento de reserva

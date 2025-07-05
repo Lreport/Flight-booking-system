@@ -65,4 +65,5 @@ class Address:
         self.__country = value
 
 
-
+    def __str__(self):
+        return f"Address ID: {self._idContact}, Type: {self._type}, Address Number: {self._addressNum}, Zip Code: {self._zipCode}, City: {self._city}, State: {self._state}, Country: {self._country}"

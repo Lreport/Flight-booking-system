@@ -60,5 +60,6 @@ class User:
     def _contact(self, value):
         self.__contact = value
 
-
+def __str__(self):
+        return f"User ID: {self._idUser}, Username: {self._userName}, First Name: {self._firstName}, Last Name: {self._lastName}, Contact: {self._contact._idCotact}"
 

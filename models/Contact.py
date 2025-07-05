@@ -44,3 +44,5 @@ class Contact:
         self.__phoneNumber = value
 
 
+    def __str__(self):
+        return f"Contact ID: {self._idCotact}, Address: {self._address._idContact}, Email: {self._email}, Phone Number: {self._phoneNumber}"

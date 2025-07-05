@@ -67,3 +67,6 @@ class Flight:
     def _arrivalTime(self, value):
         self.__arrivalTime = value
 
+
+    def __str__(self):
+        return f"Flight ID: {self._idFlight}, Price: {self._price}, Seats: {self._seats}, Crew: {self._crew}, Status: {self._status}, Departure Time: {self._departureTime}, Arrival Time: {self._arrivalTime}"
