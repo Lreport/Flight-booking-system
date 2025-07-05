@@ -1,65 +1,64 @@
 from typing import TYPE_CHECKING
+from interfaces.IUser import IUser
+
 
 if TYPE_CHECKING:
-    from models.Contact import Contact
+    from models.contact import Contact
 
-class User:
-    def __init__(self,id:int, userName:str, password:str, firstName: str, lastNama: str, contact: Contact):
-        self.__idUser= id
-        self.__userName= userName
-        self.__password= password
-        self.__firstName= firstName
-        self.__lastName= lastNama
-        self.__contact= contact
-
-    @property
-    def _idUser(self):
-        return self.__idUser
-
-    @_idUser.setter
-    def _idUser(self, value):
-        self.__idUser = value
+class User(IUser):
+    def __init__(self, id_user: int, first_name: str, last_name: str, email: str, phone: str, contact: 'Contact'):
+        self._id_user           = id_user
+        self._first_name        = first_name
+        self._last_name         = last_name
+        self._email             = email
+        self._phone             = phone
+        self._contact           = contact
 
     @property
-    def _userName(self):
-        return self.__userName
+    def id_user(self):
+        return self._id_user
 
-    @_userName.setter
-    def _userName(self, value):
-        self.__userName = value
-
-    @property
-    def _password(self):
-        return self.__password
-
-    @_password.setter
-    def _password(self, value):
-        self.__password = value
+    @id_user.setter
+    def id_user(self, value):
+        self._id_user = value
 
     @property
-    def _firstName(self):
-        return self.__firstName
+    def first_name(self):
+        return self._first_name
 
-    @_firstName.setter
-    def _firstName(self, value):
-        self.__firstName = value
-
-    @property
-    def _lastName(self):
-        return self.__lastName
-
-    @_lastName.setter
-    def _lastName(self, value):
-        self.__lastName = value
+    @first_name.setter
+    def first_name(self, value):
+        self._first_name = value
 
     @property
-    def _contact(self):
-        return self.__contact
+    def last_name(self):
+        return self._last_name
 
-    @_contact.setter
-    def _contact(self, value):
-        self.__contact = value
+    @last_name.setter
+    def last_name(self, value):
+        self._last_name = value
 
-def __str__(self):
-        return f"User ID: {self._idUser}, Username: {self._userName}, First Name: {self._firstName}, Last Name: {self._lastName}, Contact: {self._contact._idCotact}"
+    @property
+    def email(self):
+        return self._email
+
+    @email.setter
+    def email(self, value):
+        self._email = value
+
+    @property
+    def phone(self):
+        return self._phone
+
+    @phone.setter
+    def phone(self, value):
+        self._phone = value
+
+    @property
+    def contact(self):
+        return self._contact
+
+    @contact.setter
+    def contact(self, value):
+        self._contact = value
 
