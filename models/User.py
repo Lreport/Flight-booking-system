@@ -6,12 +6,10 @@ if TYPE_CHECKING:
     from models.contact import Contact
 
 class User(IUser):
-    def __init__(self, id_user: int, first_name: str, last_name: str, email: str, phone: str, contact: 'Contact'):
+    def __init__(self, id_user: int, first_name: str, last_name: str, contact: 'Contact'):
         self._id_user           = id_user
         self._first_name        = first_name
         self._last_name         = last_name
-        self._email             = email
-        self._phone             = phone
         self._contact           = contact
 
     @property
@@ -39,22 +37,6 @@ class User(IUser):
         self._last_name = value
 
     @property
-    def email(self):
-        return self._email
-
-    @email.setter
-    def email(self, value):
-        self._email = value
-
-    @property
-    def phone(self):
-        return self._phone
-
-    @phone.setter
-    def phone(self, value):
-        self._phone = value
-
-    @property
     def contact(self):
         return self._contact
 
@@ -62,3 +44,5 @@ class User(IUser):
     def contact(self, value):
         self._contact = value
 
+
+    
