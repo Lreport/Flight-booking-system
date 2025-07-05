@@ -1,69 +1,56 @@
 class Address:
-    def __init__(self, id: int, type:str, addressNum:str, zipCode:str, city:str, state:str, country:str):
-        self.__idContact = id
-        self.__type = type
-        self.__addressNum = addressNum
-        self.__zipCode = zipCode
-        self.__city = city
-        self.__state = state
-        self.__country = country
+    def __init__(self, id_address:int, street:str, city:str, state:str, country:str, zip_code:str):
+        self._id_address = id_address
+        self._street = street
+        self._city = city
+        self._state = state
+        self._country = country
+        self._zip_code = zip_code
 
     @property
-    def _idContact(self):
-        return self.__idContact
+    def id_address(self):
+        return self._id_address
 
-    @_idContact.setter
-    def _idContact(self, value):
-        self.__idContact = value
-
-    @property
-    def _type(self):
-        return self.__type
-
-    @_type.setter
-    def _type(self, value):
-        self.__type = value
+    @id_address.setter
+    def id_address(self, value):
+        self._id_address = value
 
     @property
-    def _addressNum(self):
-        return self.__addressNum
+    def street(self):
+        return self._street
 
-    @_addressNum.setter
-    def _addressNum(self, value):
-        self.__addressNum = value
-
-    @property
-    def _zipCode(self):
-        return self.__zipCode
-
-    @_zipCode.setter
-    def _zipCode(self, value):
-        self.__zipCode = value
+    @street.setter
+    def street(self, value):
+        self._street = value
 
     @property
-    def _city(self):
-        return self.__city
+    def city(self):
+        return self._city
 
-    @_city.setter
-    def _city(self, value):
-        self.__city = value
-
-    @property
-    def _state(self):
-        return self.__state
-
-    @_state.setter
-    def _state(self, value):
-        self.__state = value
+    @city.setter
+    def city(self, value):
+        self._city = value
 
     @property
-    def _country(self):
-        return self.__country
+    def state(self):
+        return self._state
 
-    @_country.setter
-    def _country(self, value):
-        self.__country = value
+    @state.setter
+    def state(self, value):
+        self._state = value
 
+    @property
+    def country(self):
+        return self._country
 
-    def __str__(self):
-        return f"Address ID: {self._idContact}, Type: {self._type}, Address Number: {self._addressNum}, Zip Code: {self._zipCode}, City: {self._city}, State: {self._state}, Country: {self._country}"
+    @country.setter
+    def country(self, value):
+        self._country = value
+
+    @property
+    def zip_code(self):
+        return self._zip_code
+
+    @zip_code.setter
+    def zip_code(self, value):
+        self._zip_code = value
