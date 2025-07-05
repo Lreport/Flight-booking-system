@@ -6,8 +6,4 @@ def name_generate():
     while len(names) < 250:
         names.add(fake.name())
 
-    for name in names:
-        print(name)
-
-if __name__ == "__main__":
-    name_generate()
+    return list(names)
