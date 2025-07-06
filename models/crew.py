@@ -17,3 +17,18 @@ class Crew(User):
     @role.setter
     def role(self, value):
         self._role = value
+
+
+class Pilot(Crew):
+    def __init__(self, id_user:int, first_name:str, last_name:str, contact: 'Contact', role:str = 'Pilot'):
+        super().__init__(id_user, first_name, last_name, contact, role)
+
+
+class Copilot(Crew):
+    def __init__(self, id_user:int, first_name:str, last_name:str, contact: 'Contact', role:str = 'Copilot'):
+        super().__init__(id_user, first_name, last_name, contact, role)
+
+
+class Commissar(Crew):
+    def __init__(self, id_user:int, first_name:str, last_name:str, contact: 'Contact', role:str = 'Commissar'):
+        super().__init__(id_user, first_name, last_name, contact, role)
