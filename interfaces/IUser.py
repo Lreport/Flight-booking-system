@@ -5,7 +5,7 @@ if TYPE_CHECKING:
     from models.contact import Contact
 
 
-class IUser(ABC):
+class Iuser(ABC):
     ########################################################
     @property
     def id_user(self) -> int:
