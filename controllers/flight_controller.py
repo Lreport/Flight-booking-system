@@ -51,9 +51,9 @@ class FlightController:
             flight.add_crew_member(commissar)
 
     def show_flights_and_random_seats(self):
-        print("=" * 80)
+        print("=" * 50)
         print("SISTEMA DE RESERVAS DE VOOS")
-        print("=" * 80)
+        print("=" * 50)
         for flight in self._flights:
             print(f"\n{flight}")
             print(f"Horário: {flight.departure_time} - {flight.arrival_time}")
@@ -63,18 +63,18 @@ class FlightController:
             print("10 Assentos Aleatórios (todos ocupados):")
             for seat in random_seats:
                 print(f"  Assento {seat.id_seat}: {seat.passenger.name}")
-            print("-" * 60)
+            print("-" * 50)
 
     def show_crew_by_flight(self):
-        print("\n" + "=" * 80)
+        print("\n" + "=" * 50)
         print("TRIPULAÇÃO POR VOO")
-        print("=" * 80)
+        print("=" * 50)
         for flight in self._flights:
             print(f"\n{flight}")
             print("Tripulação:")
             for crew_member in flight.crew:
                 print(f"  {crew_member.role}: {crew_member.name}")
-            print("-" * 60)
+            print("-" * 50)
 
     def get_all_flights(self) -> List[Flight]:
         """Retorna todos os voos"""

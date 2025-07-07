@@ -13,9 +13,9 @@ def main():
     # Mostrar tripulação por voo
     flight_controller.show_crew_by_flight()
     
-    print("\n" + "=" * 80)
+    print("\n" + "=" * 50)
     print("SISTEMA EXECUTADO COM SUCESSO!")
-    print("=" * 80)
+    print("=" * 50)
 
 if __name__ == "__main__":
     main()
