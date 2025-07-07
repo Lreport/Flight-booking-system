@@ -41,5 +41,5 @@ class Seat(ISeat):
 
     def __str__(self):
         status = "Ocupado" if self.is_occupied() else "Livre"
-        passenger_name = f" - {self._passenger.first_name} {self._passenger.last_name}" if self._passenger else ""
+        passenger_name = f" - {self._passenger.name}" if self._passenger else ""
         return f"Assento {self._id_seat} ({status}){passenger_name}"
