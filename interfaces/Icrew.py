@@ -21,26 +21,14 @@ class Icrew(ABC):
     #########################################################
     @property
     @abstractmethod
-    def first_name(self) -> str:
-        """Get the user's first name."""
+    def name(self) -> str:
+        """Get the user's name."""
         pass
 
-    @first_name.setter
+    @name.setter
     @abstractmethod
-    def first_name(self, value: str):
-        """Set the user's first name."""
-        pass
-    #########################################################
-    @property
-    @abstractmethod
-    def last_name(self) -> str:
-        """Get the user's last name."""
-        pass
-    
-    @last_name.setter
-    @abstractmethod
-    def last_name(self, value: str):
-        """Set the user's last name."""
+    def name(self, value: str):
+        """Set the user's name."""
         pass
     #########################################################
     @property
