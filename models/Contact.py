@@ -5,10 +5,10 @@ if TYPE_CHECKING:
     from models.address import Address
 
 class Contact:
-    def __init__(self, id_contact:int, address: 'Address', id_address: 'Address', email:str, phone_number:str):
+    def __init__(self, id_contact:int, address: 'Address', id_address:int, email:str, phone_number:str):
         self._id_contact    = id_contact
         self._address       = address
-        self._id_address    = id_address #concertar isso 
+        self._id_address    = id_address
         self._email         = email
         self._phone_number  = phone_number
 

@@ -1,11 +1,11 @@
 class Address:
     def __init__(self, id_address:int, street:str, city:str, state:str, country:str, zip_code:str):
-        self._id_address = id_address
-        self._street = street
-        self._city = city
-        self._state = state
-        self._country = country
-        self._zip_code = zip_code
+        self._id_address    = id_address
+        self._street        = street
+        self._city          = city
+        self._state         = state
+        self._country       = country
+        self._zip_code      = zip_code
 
     @property
     def id_address(self):
