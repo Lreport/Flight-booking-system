@@ -6,7 +6,7 @@ if TYPE_CHECKING:
     from models.passenger import Passenger
 
 class Seat(ISeat):
-    def __init__(self, id_seat:int, flight:'Flight', passenger:'Passenger' = None):
+    def __init__(self, id_seat:int, flight:'Flight', passenger:'Passenger'):
         self._id_seat       = id_seat
         self._flight        = flight
         self._passenger     = passenger
