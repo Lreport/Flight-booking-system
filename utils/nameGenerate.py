@@ -1,4 +1,4 @@
-from faker import Faker #tentar entender o por que esta alertando sobre a importação do Faker
+from faker import Faker
 
 def name_generate(quantity=250):
     fake = Faker()
