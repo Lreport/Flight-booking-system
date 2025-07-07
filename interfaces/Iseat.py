@@ -6,7 +6,7 @@ if TYPE_CHECKING:
     from models.passenger import Passenger
 
 
-class ISeat(ABC):
+class Iseat(ABC):
     ########################################################
     @property
     @abstractmethod

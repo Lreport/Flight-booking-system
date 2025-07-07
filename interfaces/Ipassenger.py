@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from models.contact import Contact
 
-class IPassenger(ABC):
+class Ipassenger(ABC):
     ########################################################
     @property
     @abstractmethod

@@ -2,10 +2,10 @@ from typing import List
 from models.passenger import Passenger
 from models.crew import Crew
 from models.seat import Seat
-from interfaces.Iflight import IFlight
+from interfaces.Iflight import Iflight
 
 
-class Flight(IFlight):
+class Flight(Iflight):
     def __init__(self, id_flight:int, flight_number:str, origin:str, destination:str, departure_time:str, arrival_time:str, price:float ):
         self._id_flight      = id_flight
         self._flight_number  = flight_number

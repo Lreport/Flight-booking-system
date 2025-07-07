@@ -1,11 +1,11 @@
 from typing import TYPE_CHECKING
-from interfaces.Iseat import ISeat
+from interfaces.Iseat import Iseat
 
 if TYPE_CHECKING:
     from models.flight import Flight
     from models.passenger import Passenger
 
-class Seat(ISeat):
+class Seat(Iseat):
     def __init__(self, id_seat:int, flight:'Flight', passenger:'Passenger'):
         self._id_seat       = id_seat
         self._flight        = flight

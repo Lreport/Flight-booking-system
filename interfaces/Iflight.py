@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from models.passenger import Passenger
 from models.crew import Crew
 
-class IFlight(ABC):
+class Iflight(ABC):
     #########################################################
     @property
     @abstractmethod
