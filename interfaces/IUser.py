@@ -8,6 +8,7 @@ if TYPE_CHECKING:
 class Iuser(ABC):
     ########################################################
     @property
+    @abstractmethod
     def id_user(self) -> int:
         """Get the user ID."""
         pass
@@ -20,54 +21,20 @@ class Iuser(ABC):
 
     #######################################################
     @property
-    def first_name(self) -> str:
-        """Get the user's first name."""
+    @abstractmethod
+    def name(self) -> str:
+        """Get the user's name."""
         pass
 
-    @first_name.setter
+    @name.setter
     @abstractmethod
-    def first_name(self, value: str):
-        """Set the user's first name."""
+    def name(self, value: str):
+        """Set the user's name."""
         pass
 
     #######################################################
     @property
-    def last_name(self) -> str:
-        """Get the user's last name."""
-        pass
-
-    @last_name.setter
     @abstractmethod
-    def last_name(self, value: str):
-        """Set the user's last name."""
-        pass
-
-    #######################################################
-    @property
-    def email(self) -> str:
-        """Get the user's email."""
-        pass
-
-    @email.setter
-    @abstractmethod
-    def email(self, value: str):
-        """Set the user's email."""
-        pass
-
-    #######################################################
-    @property
-    def phone(self) -> str:
-        """Get the user's phone number."""
-        pass
-
-    @phone.setter
-    @abstractmethod
-    def phone(self, value: str):
-        """Set the user's phone number."""
-        pass
-
-    #######################################################
-    @property
     def contact(self) -> 'Contact':
         """Get the user's contact information."""
         pass
