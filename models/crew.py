@@ -6,7 +6,7 @@ if TYPE_CHECKING:
 
 
 class Crew(Icrew):
-    def __init__(self, id_user:int, first_name:str, last_name:str, contact: 'Contact', role:str):
+    def __init__(self, id_user:int, first_name:str, last_name:str, contact: 'Contact' = None, role:str = "Crew"):
         self._id_user       = id_user
         self._first_name    = first_name
         self._last_name     = last_name
@@ -58,15 +58,15 @@ class Crew(Icrew):
 
 
 class Pilot(Crew):
-    def __init__(self, id_user:int, first_name:str, last_name:str, contact: 'Contact', role:str = 'Pilot'):
+    def __init__(self, id_user:int, first_name:str, last_name:str, contact: 'Contact' = None, role:str = 'Pilot'):
         super().__init__(id_user, first_name, last_name, contact, role)
 
 
 class Copilot(Crew):
-    def __init__(self, id_user:int, first_name:str, last_name:str, contact: 'Contact', role:str = 'Copilot'):
+    def __init__(self, id_user:int, first_name:str, last_name:str, contact: 'Contact' = None, role:str = 'Copilot'):
         super().__init__(id_user, first_name, last_name, contact, role)
 
 
 class Commissar(Crew):
-    def __init__(self, id_user:int, first_name:str, last_name:str, contact: 'Contact', role:str = 'Commissar'):
+    def __init__(self, id_user:int, first_name:str, last_name:str, contact: 'Contact' = None, role:str = 'Commissar'):
         super().__init__(id_user, first_name, last_name, contact, role)
