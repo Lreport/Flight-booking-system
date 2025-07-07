@@ -3,8 +3,6 @@ from typing import Optional
 from models.flight import Flight
 from models.passenger import Passenger
 from models.crew import Pilot, Copilot, Commissar
-from models.contact import Contact
-from models.address import Address
 from utils.nameGenerate import name_generate
 import random
 
