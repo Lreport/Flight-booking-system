@@ -1,7 +1,8 @@
 from typing import List
+from typing import Optional
 from models.flight import Flight
 from models.passenger import Passenger
-from models.crew import Crew, Pilot, Copilot, Commissar
+from models.crew import Pilot, Copilot, Commissar
 from models.contact import Contact
 from models.address import Address
 from utils.nameGenerate import name_generate
@@ -11,20 +12,13 @@ import random
 class FlightController:
     def __init__(self):
         self._flights: List[Flight] = []
-        self._passengers: List[Passenger] = []
-        self._crew_members: List[Crew] = []
         self._initialize_system()
 
     def _initialize_system(self):
-        """Inicializa o sistema com 10 voos, passageiros e tripulação"""
-        self._create_flights()
-        self._create_passengers()
-        self._create_crew_members()
-        self._assign_passengers_to_flights()
-        self._assign_crew_to_flights()
+        self._create_flights_and_fill()
+        self._create_and_assign_crew()
 
-    def _create_flights(self):
-        """Cria 10 voos com preços diferentes"""
+    def _create_flights_and_fill(self):
         flight_data = [
             (1, "AA101", "São Paulo", "Rio de Janeiro", "08:00", "09:30", 450.00),
             (2, "AA102", "Rio de Janeiro", "Brasília", "10:00", "11:45", 380.00),
@@ -37,175 +31,63 @@ class FlightController:
             (9, "AA109", "Curitiba", "Belo Horizonte", "12:00", "13:30", 420.00),
             (10, "AA110", "Belo Horizonte", "São Paulo", "18:00", "19:15", 360.00)
         ]
-
+        passenger_names = name_generate(2500)
+        name_idx = 0
         for flight_info in flight_data:
             flight = Flight(*flight_info)
+            for seat_id in range(1, 251):
+                name = passenger_names[name_idx]
+                name_idx += 1
+                passenger = Passenger(seat_id, name)
+                flight.add_passenger(passenger, seat_id)
             self._flights.append(flight)
 
-    def _create_passengers(self):
-        """Cria passageiros usando o gerador de nomes"""
-        names = name_generate()
-        
-        for i, name in enumerate(names, 1):
-            # Criar dados de contato fictícios
-            address = Address(
-                i,  # id_address
-                f"Rua {random.randint(1, 100)}",  # street
-                f"Cidade {random.randint(1, 10)}",  # city
-                f"Estado {random.randint(1, 27)}",  # state
-                "Brasil",  # country
-                f"{random.randint(10000, 99999)}-{random.randint(100, 999)}"  # zip_code
-            )
-            
-            contact = Contact(
-                i,  # id_contact
-                address,  # address
-                address._id_address,  # id_address
-                f"passenger{i}@email.com",  # email
-                f"+55{random.randint(100000000, 999999999)}"  # phone_number
-            )
-            
-            # Dividir o nome em primeiro e último nome
-            name_parts = name.split()
-            first_name = name_parts[0] if name_parts else "Nome"
-            last_name = " ".join(name_parts[1:]) if len(name_parts) > 1 else "Sobrenome"
-            
-            passenger = Passenger(i, first_name, last_name, contact)
-            self._passengers.append(passenger)
-
-    def _create_crew_members(self):
-        """Cria membros da tripulação"""
-        crew_names = [
-            ("João Silva", "Pilot"),
-            ("Maria Santos", "Copilot"),
-            ("Pedro Oliveira", "Pilot"),
-            ("Ana Costa", "Copilot"),
-            ("Carlos Ferreira", "Pilot"),
-            ("Lucia Rodrigues", "Copilot"),
-            ("Roberto Almeida", "Pilot"),
-            ("Fernanda Lima", "Copilot"),
-            ("Marcos Pereira", "Pilot"),
-            ("Juliana Souza", "Copilot"),
-            ("Ricardo Martins", "Commissar"),
-            ("Patricia Gomes", "Commissar"),
-            ("Andre Silva", "Commissar"),
-            ("Camila Santos", "Commissar"),
-            ("Diego Oliveira", "Commissar"),
-            ("Vanessa Costa", "Commissar"),
-            ("Thiago Ferreira", "Commissar"),
-            ("Amanda Rodrigues", "Commissar"),
-            ("Bruno Almeida", "Commissar"),
-            ("Carolina Lima", "Commissar")
-        ]
-
-        for i, (name, role) in enumerate(crew_names, 1):
-            # Criar dados de contato fictícios
-            address = Address(
-                i + 10000,  # id_address
-                f"Rua {random.randint(1, 100)}",  # street
-                f"Cidade {random.randint(1, 10)}",  # city
-                f"Estado {random.randint(1, 27)}",  # state
-                "Brasil",  # country
-                f"{random.randint(10000, 99999)}-{random.randint(100, 999)}"  # zip_code
-            )
-            
-            contact = Contact(
-                i + 10000,  # id_contact
-                address,  # address
-                address._id_address,  # id_address
-                f"crew{i}@airline.com",  # email
-                f"+55{random.randint(100000000, 999999999)}"  # phone_number
-            )
-            
-            name_parts = name.split()
-            first_name = name_parts[0]
-            last_name = " ".join(name_parts[1:])
-            
-            if role == "Pilot":
-                crew_member = Pilot(i + 1000, first_name, last_name, contact)
-            elif role == "Copilot":
-                crew_member = Copilot(i + 1000, first_name, last_name, contact)
-            else:
-                crew_member = Commissar(i + 1000, first_name, last_name, contact)
-            
-            self._crew_members.append(crew_member)
-
-    def _assign_passengers_to_flights(self):
-        """Associa passageiros aleatoriamente aos voos"""
-        for passenger in self._passengers:
-            # Escolher um voo aleatório
-            flight = random.choice(self._flights)
-            
-            # Encontrar um assento disponível
-            available_seats = flight.get_available_seats()
-            if available_seats:
-                seat = random.choice(available_seats)
-                seat.passenger = passenger
-                passenger.assigned_seat = seat
-                if passenger not in flight.passengers:
-                    flight.passengers.append(passenger)
-
-    def _assign_crew_to_flights(self):
-        """Associa tripulação aos voos"""
-        pilots = [crew for crew in self._crew_members if isinstance(crew, Pilot)]
-        copilots = [crew for crew in self._crew_members if isinstance(crew, Copilot)]
-        commissars = [crew for crew in self._crew_members if isinstance(crew, Commissar)]
-
+    def _create_and_assign_crew(self):
+        crew_names = name_generate(30)
         for i, flight in enumerate(self._flights):
-            # Cada voo tem 1 piloto, 1 copiloto e 2 comissários
-            if i < len(pilots):
-                flight.add_crew_member(pilots[i])
-            if i < len(copilots):
-                flight.add_crew_member(copilots[i])
-            
-            # Adicionar comissários (2 por voo)
-            commissar_indices = [i * 2, i * 2 + 1]
-            for idx in commissar_indices:
-                if idx < len(commissars):
-                    flight.add_crew_member(commissars[idx])
+            pilot = Pilot(1000 + i, crew_names[i])
+            copilot = Copilot(2000 + i, crew_names[i+10])
+            commissar = Commissar(3000 + i, crew_names[i+20])
+            flight.add_crew_member(pilot)
+            flight.add_crew_member(copilot)
+            flight.add_crew_member(commissar)
+
+    def show_flights_and_random_seats(self):
+        print("=" * 80)
+        print("SISTEMA DE RESERVAS DE VOOS")
+        print("=" * 80)
+        for flight in self._flights:
+            print(f"\n{flight}")
+            print(f"Horário: {flight.departure_time} - {flight.arrival_time}")
+            print(f"Passageiros: 250/250")
+            print(f"Tripulação: 3 membros")
+            random_seats = flight.get_random_seats(10)
+            print("10 Assentos Aleatórios (todos ocupados):")
+            for seat in random_seats:
+                print(f"  Assento {seat.id_seat}: {seat.passenger.name}")
+            print("-" * 60)
+
+    def show_crew_by_flight(self):
+        print("\n" + "=" * 80)
+        print("TRIPULAÇÃO POR VOO")
+        print("=" * 80)
+        for flight in self._flights:
+            print(f"\n{flight}")
+            print("Tripulação:")
+            for crew_member in flight.crew:
+                print(f"  {crew_member.role}: {crew_member.name}")
+            print("-" * 60)
 
     def get_all_flights(self) -> List[Flight]:
         """Retorna todos os voos"""
         return self._flights
 
-    def get_flight_by_id(self, flight_id: int) -> Flight:
+    def get_flight_by_id(self, flight_id: int) -> Optional[Flight]:
         """Retorna um voo específico por ID"""
         for flight in self._flights:
             if flight.id_flight == flight_id:
                 return flight
         return None
-
-    def show_flights_and_random_seats(self):
-        """Mostra todos os voos e 10 assentos aleatórios de cada um"""
-        print("=" * 80)
-        print("SISTEMA DE RESERVAS DE VOOS")
-        print("=" * 80)
-        
-        for flight in self._flights:
-            print(f"\n{flight}")
-            print(f"Horário: {flight.departure_time} - {flight.arrival_time}")
-            print(f"Passageiros: {len(flight.passengers)}/250")
-            print(f"Tripulação: {len(flight.crew)} membros")
-            
-            # Mostrar 10 assentos aleatórios
-            random_seats = flight.get_random_seats(10)
-            print("10 Assentos Aleatórios:")
-            for seat in random_seats:
-                print(f"  {seat}")
-            print("-" * 60)
-
-    def show_crew_by_flight(self):
-        """Mostra a tripulação de cada voo"""
-        print("\n" + "=" * 80)
-        print("TRIPULAÇÃO POR VOO")
-        print("=" * 80)
-        
-        for flight in self._flights:
-            print(f"\n{flight}")
-            print("Tripulação:")
-            for crew_member in flight.crew:
-                print(f"  {crew_member}")
-            print("-" * 60)
 
     def get_system_summary(self):
         """Retorna um resumo do sistema"""
