@@ -5,7 +5,7 @@ if TYPE_CHECKING:
     from models.address import Address
 
 class Contact:
-    def __init__(self, id_contact:int, address: 'Address', id_address:int, email:str, phone_number:str):
+    def __init__(self, id_contact: int = None, address: 'Address' = None, id_address: int = None, email: str = None, phone_number: str = None):
         self._id_contact    = id_contact
         self._address       = address
         self._id_address    = id_address
