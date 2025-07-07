@@ -7,6 +7,7 @@ if TYPE_CHECKING:
 class IPassenger(ABC):
     ########################################################
     @property
+    @abstractmethod
     def id_user(self) -> int:
         """Get the user ID."""
         pass
@@ -19,6 +20,7 @@ class IPassenger(ABC):
 
     ########################################################
     @property
+    @abstractmethod
     def first_name(self) -> str:
         """Get the user's first name."""
         pass
@@ -31,6 +33,7 @@ class IPassenger(ABC):
 
     ########################################################
     @property
+    @abstractmethod
     def last_name(self) -> str:
         """Get the user's last name."""
         pass
@@ -43,6 +46,7 @@ class IPassenger(ABC):
 
     ########################################################
     @property
+    @abstractmethod
     def contact(self) -> 'Contact':
         """Get the contact information of the passenger."""
         pass

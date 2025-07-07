@@ -9,6 +9,7 @@ if TYPE_CHECKING:
 class ISeat(ABC):
     ########################################################
     @property
+    @abstractmethod
     def id_seat(self) -> int:
         """Get the seat ID."""
         pass
@@ -21,6 +22,7 @@ class ISeat(ABC):
 
     ########################################################
     @property
+    @abstractmethod
     def flight(self) -> 'Flight':
         """Get the flight associated with the seat."""
         pass
@@ -33,6 +35,7 @@ class ISeat(ABC):
 
     ########################################################
     @property
+    @abstractmethod
     def passenger(self) -> 'Passenger':
         """Get the passenger assigned to the seat."""
         pass

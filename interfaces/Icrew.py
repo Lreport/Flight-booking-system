@@ -8,6 +8,7 @@ if TYPE_CHECKING:
 class Icrew(ABC):
     #########################################################
     @property
+    @abstractmethod
     def id_user(self) -> int:
         """Get the user ID."""
         pass
@@ -19,6 +20,7 @@ class Icrew(ABC):
         pass
     #########################################################
     @property
+    @abstractmethod
     def first_name(self) -> str:
         """Get the user's first name."""
         pass
@@ -30,6 +32,7 @@ class Icrew(ABC):
         pass
     #########################################################
     @property
+    @abstractmethod
     def last_name(self) -> str:
         """Get the user's last name."""
         pass
@@ -41,6 +44,7 @@ class Icrew(ABC):
         pass
     #########################################################
     @property
+    @abstractmethod
     def contact(self) -> 'Contact':
         """Get the user's contact information."""
         pass
@@ -52,6 +56,7 @@ class Icrew(ABC):
         pass
     #########################################################
     @property
+    @abstractmethod
     def role(self) -> str:
         """Get the crew member's role."""
         pass
