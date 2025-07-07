@@ -6,7 +6,7 @@ if TYPE_CHECKING:
     from models.user import User
 
 class Passenger(IPassenger):
-    def __init__(self, id_user: int, first_name: str, last_name: str, contact: 'Contact'):
+    def __init__(self, id_user: int, first_name: str, last_name: str, contact: 'Contact' = None):
         self._id_user       = id_user
         self._first_name    = first_name
         self._last_name     = last_name
