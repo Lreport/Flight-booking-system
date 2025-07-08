@@ -1,20 +1,22 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 from models.user import User
+from interfaces.Ipassenger import Ipassenger
 
 if TYPE_CHECKING:
     from models.contact import Contact
+    from models.seat import Seat
 
-class Passenger(User):
+class Passenger(User, Ipassenger):
     def __init__(self, id_user: int, name: str, contact=None):
         super().__init__(id_user, name, contact)
         self._assigned_seat = None
 
     @property
-    def assigned_seat(self):
+    def assigned_seat(self) -> Optional['Seat']:
         return self._assigned_seat
 
     @assigned_seat.setter
-    def assigned_seat(self, value):
+    def assigned_seat(self, value: Optional['Seat']):
         self._assigned_seat = value
 
     def cancel_booking(self):

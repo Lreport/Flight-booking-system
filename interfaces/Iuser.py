@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 if TYPE_CHECKING:
     from models.contact import Contact
@@ -35,13 +35,13 @@ class Iuser(ABC):
     #######################################################
     @property
     @abstractmethod
-    def contact(self) -> 'Contact':
+    def contact(self) -> Optional['Contact']:
         """Get the user's contact information."""
         pass
 
     @contact.setter
     @abstractmethod
-    def contact(self, value: 'Contact'):
+    def contact(self, value: Optional['Contact']):
         """Set the user's contact information."""
         pass
 

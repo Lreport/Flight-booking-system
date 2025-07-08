@@ -62,7 +62,10 @@ class FlightController:
             random_seats = flight.get_random_seats(10)
             print("10 Assentos Aleatórios (todos ocupados):")
             for seat in random_seats:
-                print(f"  Assento {seat.id_seat}: {seat.passenger.name}")
+                if seat.passenger:
+                    print(f"  Assento {seat.id_seat}: {seat.passenger.name}")
+                else:
+                    print(f"  Assento {seat.id_seat}: Livre")
             print("-" * 50)
 
     def show_crew_by_flight(self):

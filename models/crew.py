@@ -1,11 +1,12 @@
 from typing import TYPE_CHECKING
 from models.user import User
+from interfaces.Icrew import Icrew
 
 if TYPE_CHECKING:
     from models.contact import Contact
 
 
-class Crew(User):
+class Crew(User, Icrew):
     def __init__(self, id_user: int, name: str, contact=None, role: str = "Crew"):
         super().__init__(id_user, name, contact)
         self._role = role

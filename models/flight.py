@@ -25,7 +25,7 @@ class Flight(Iflight):
     def _create_seats(self):
         """Cria 250 assentos para o voo"""
         for i in range(1, 251):
-            seat = Seat(i, self, None)  # Inicialmente sem passageiro
+            seat = Seat(i, self, None)
             self._seats.append(seat)
 
     @property

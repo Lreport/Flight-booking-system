@@ -1,4 +1,9 @@
 from abc import ABC, abstractmethod
+from typing import List, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from models.seat import Seat
+
 from models.passenger import Passenger
 from models.crew import Crew
 
@@ -90,24 +95,30 @@ class Iflight(ABC):
     #########################################################
     @property
     @abstractmethod
-    def passengers(self) -> list[Passenger]:
+    def passengers(self) -> List[Passenger]:
         """Get the list of passengers on the flight."""
         pass
 
     @passengers.setter
     @abstractmethod
-    def passengers(self, value: list[Passenger]):
+    def passengers(self, value: List[Passenger]):
         """Set the list of passengers on the flight."""
         pass
     #########################################################
     @property
     @abstractmethod
-    def crew(self) -> list[Crew]:
+    def crew(self) -> List[Crew]:
         """Get the list of crew members on the flight."""
         pass
 
     @crew.setter
     @abstractmethod
-    def crew(self, value: list[Crew]):
+    def crew(self, value: List[Crew]):
         """Set the list of crew members on the flight."""
+        pass
+    #########################################################
+    @property
+    @abstractmethod
+    def seats(self) -> List['Seat']:
+        """Get the list of seats on the flight."""
         pass

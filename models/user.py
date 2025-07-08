@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 from interfaces.Iuser import Iuser
 
 
@@ -28,11 +28,11 @@ class User(Iuser):
         self._name = value
 
     @property
-    def contact(self):
+    def contact(self) -> Optional['Contact']:
         return self._contact
 
     @contact.setter
-    def contact(self, value):
+    def contact(self, value: Optional['Contact']):
         self._contact = value
 
 

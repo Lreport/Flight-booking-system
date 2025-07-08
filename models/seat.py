@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 from interfaces.Iseat import Iseat
 
 if TYPE_CHECKING:
@@ -6,7 +6,7 @@ if TYPE_CHECKING:
     from models.passenger import Passenger
 
 class Seat(Iseat):
-    def __init__(self, id_seat:int, flight:'Flight', passenger:'Passenger'):
+    def __init__(self, id_seat:int, flight:'Flight', passenger:Optional['Passenger']):
         self._id_seat       = id_seat
         self._flight        = flight
         self._passenger     = passenger
@@ -32,7 +32,7 @@ class Seat(Iseat):
         return self._passenger
 
     @passenger.setter
-    def passenger(self, value):
+    def passenger(self, value: Optional['Passenger']):
         self._passenger = value
 
     def is_occupied(self):

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 if TYPE_CHECKING:
     from models.flight import Flight
@@ -36,12 +36,12 @@ class Iseat(ABC):
     ########################################################
     @property
     @abstractmethod
-    def passenger(self) -> 'Passenger':
+    def passenger(self) -> Optional['Passenger']:
         """Get the passenger assigned to the seat."""
         pass
 
     @passenger.setter
     @abstractmethod
-    def passenger(self, value: 'Passenger'):
+    def passenger(self, value: Optional['Passenger']):
         """Set the passenger assigned to the seat."""
         pass
